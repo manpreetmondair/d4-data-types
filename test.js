@@ -1,6 +1,7 @@
 var avow = require('avow');
 var moment = require('moment');
 
+
 // Booleans
 function isTrue(value) {
     return value;
@@ -25,9 +26,9 @@ function isUndefined(value) {
     if (value === undefined) {
       return true;
     }
-     else{
+    else {
          return false;
-     } 
+    } 
 }
 
 var blockOfClay;
@@ -46,14 +47,14 @@ function convertCaseUpper(value) {
 
 avow('convertCaseUpper returns an uppercase string', convertCaseUpper('i am shouting!') === 'I AM SHOUTING!');
 
-function repeatWord(value) {
-    return value.repeat(2);
+function repeatWord(value, value1) {
+    return value.repeat(value1);
 }
 
 avow('repeatWord returns a repeated word', repeatWord('Knock.', 2) === 'Knock.Knock.');
 
-function sliceWord(value) {
-    return value.slice(7, 12);
+function sliceWord(value, value1, value2) {
+    return value.slice(value1, value2);
 }
 
 avow('sliceWord returns a slice of a word', sliceWord('I love pizza!', 7, 12) === 'pizza');
@@ -93,7 +94,7 @@ avow('extractPhoneNumber returns a string of numbers', extractPhoneNumber('(888)
 
 // Numbers
 function stringToNumber(value) {
-return Number(value);
+    return Number(value);
 }
 
 avow('stringToNumber returns a proper Number', stringToNumber('1999') === 1999);
@@ -109,7 +110,7 @@ function isDivisibleByThree(value) {
    {
        return true;
     }
-    else{
+    else {
         return false;
     }
 }
@@ -124,16 +125,15 @@ function makeRandomNumber(value) {
 avow('makeRandomNumber returns a random number between 0 and 10', makeRandomNumber(10) >= 0 && makeRandomNumber(10) <= 10);
 
 function roundNumber(value) {
-return Math.ceil(value);
+    return Math.round(value);
 }
 
 avow('roundNumber returns a number rounded up', roundNumber(5.51) === 6);
 
 // Dates
-function justAMoment(value) {
+function justAMoment() {
     // Look at moment.js docs to find how to return the day name, like Wednesday
-    var moment = require('moment');
-    return moment(value).format('dddd');
+    return moment().format('dddd');
 }
 
 avow('justAMoment returns true if the function returns a day name', justAMoment().includes('day') === true);
